@@ -73,12 +73,12 @@ def alinear_stack(imagenes, upsample_factor=20):
 # 1. DARK
 # =========================================================
 
-dark_folder = "C:/Users/Usuario/Desktop/TFG/Estudio RAW/Estudio RAW/Dark_frames_1,200"
+dark_folder = ""
 dark_img = leer_dark_folder(dark_folder)
 
 # =========================================================
-# 2. MATRIZ A (YA CALIBRADA)
-# 👉 PEGA AQUÍ TU MATRIZ A (6x4)
+# 2. MATRIZ A
+# 
 # =========================================================
 
 A = np.array([
@@ -94,13 +94,11 @@ A = np.array([
 A_pinv = np.linalg.pinv(A)
 
 # =========================================================
-# 3. CARPETA LHP (SOLO 6 IMÁGENES)
+# 3. CARPETA (SOLO 6 IMÁGENES)
 # =========================================================
 
-folder_LHP = "C:/Users/Usuario/Desktop/TFG/Estudio RAW/Estudio RAW/Estudioestructuradiedrica" \
-#+retardador
-#+retardador"  # ← AJUSTA                  12
-#folder_LHP = "C:/Users/Usuario/Desktop/analisis_melanoma/prueba44" # ← AJUSTA
+folder_LHP = "" 
+
 
 files = sorted([f for f in os.listdir(folder_LHP) if f.endswith(".dng")])
 
@@ -133,7 +131,7 @@ H, W_img = imgs.shape[1], imgs.shape[2]
 
 
 # =========================================================
-# USAR TODA LA IMAGEN (SIN ROI)
+# USAR TODA LA IMAGEN
 # =========================================================
 
 H, W_img = imgs.shape[1], imgs.shape[2]
@@ -180,7 +178,7 @@ S3_map = S3_norm.reshape(H, W_img)
 azimuth_map = 0.5 * np.arctan2(S2_map, S1_map)         # rad
 ellipticity_map = 0.5 * np.arcsin(np.clip(S3_map, -1, 1))  # rad
 
-# Pasar a grados para que se entienda mejor
+
 azimuth_deg = np.degrees(azimuth_map)
 ellipticity_deg = np.degrees(ellipticity_map)
 
