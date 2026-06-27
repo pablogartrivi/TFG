@@ -20,7 +20,7 @@ from scipy.ndimage import uniform_filter
 
 def extraer_roi_max_intensidad(img, size=200):
     """
-    ROI basada en máxima intensidad media local (MUCHO más estable que argmax).
+    ROI basada en máxima intensidad media local
     """
 
     # media local en ventana size x size
@@ -110,7 +110,7 @@ def calcular_snr(signal_img, dark_img, white_level, size=250):
     # σ_dark
     sigma_dark = np.std(dark)
 
-    # SNR física
+    # SNR
     snr = mu_s / np.sqrt(mu_s + sigma_dark**2)
 
     return snr
