@@ -110,9 +110,7 @@ def leer_rojo_real(path, dark_img):
         return red
 
 
-# =========================================================
-# DARK FRAME
-# =========================================================
+
 def crear_master_dark(folder):
     folder = Path(folder)
     files = sorted(folder.glob("*.dng"))
@@ -193,9 +191,7 @@ if __name__ == "__main__":
     A = A / np.mean(A[:, 0])
 
     S_theo = np.array( dtype=np.float64)
-    # -------------------------
-    # PATHS
-    # -------------------------
+
     folder = Path("")
     dark_folder = Path("")
 
@@ -211,9 +207,7 @@ if __name__ == "__main__":
     # -------------------------
     images = [leer_rojo_real(p, dark_img) for p in image_paths]
 
-        # -------------------------
-        # ROI (usa primera imagen)
-        # -------------------------
+
     best_roi, S, S_error_rel = buscar_mejor_roi(images, A, S_theo, dark_img)
 
     S_error = np.linalg.norm(S - S_theo)
