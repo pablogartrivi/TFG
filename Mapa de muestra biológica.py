@@ -77,12 +77,11 @@ def leer_rojo_real(path, dark_img):
         full_red = np.zeros_like(clean_raw)
         full_red[1::2, 0::2] = clean_raw[1::2, 0::2]
 
-        # 3. Kernel de interpolación bilineal para patrón Bayer
         kernel = np.array([[1, 2, 1],
                            [2, 4, 2],
                            [1, 2, 1]], dtype=np.float32) / 4.0
 
-        # 4. Convolución para rellenar huecos
+  
         red_demosaiced = convolve(full_red, kernel, mode='reflect')
 
         return red_demosaiced
@@ -160,7 +159,7 @@ def preparar_fondo_biologico(img):
         sigma_spatial=3
     )
 
-    # CLAHE
+
     img = exposure.equalize_adapthist(
         img,
         clip_limit=0.03
@@ -176,7 +175,7 @@ def preparar_fondo_biologico(img):
 # 1. DARK FRAMES
 # =========================================================
 
-dark_folder = "C:/Users/Usuario/Desktop/TFG/Estudio RAW/Estudio RAW/Dark_frames_1,200"
+dark_folder = ""
 dark_img = leer_dark_folder(dark_folder)
 
 
@@ -200,7 +199,7 @@ A_pinv = np.linalg.pinv(A)
 # 3. CARPETA DE IMÁGENES
 # =========================================================
 
-folder_LHP = "C:/Users/Usuario/Desktop/analisis_melanoma/prueba54"
+folder_LHP = ""
 
 files = sorted([
     f for f in os.listdir(folder_LHP)
