@@ -101,7 +101,7 @@ def validar_stokes(I_matrix, W_norm, A, lam=1e-3):
         dop_list.append(dop)
         S_rec_list.append(S_rec)
 
-        # ===== NUEVO: acumulado global =====
+      
         error_global_num += np.linalg.norm(S_rec - S_theory)
         error_global_den += np.linalg.norm(S_theory)
 
@@ -141,9 +141,7 @@ order = [
 
 carpetas = [os.path.join(base_folder, name) for name in order]
 
-# =========================================================
-# CARGA DE IMÁGENES UNA SOLA VEZ
-# =========================================================
+
 
 imagenes = []
 for folder in carpetas:
@@ -153,7 +151,7 @@ for folder in carpetas:
     imagenes.append(imgs_folder)
 
 # =========================================================
-# ROI INICIAL
+# ROI
 # =========================================================
 
 ref_img = imagenes[0][0]
